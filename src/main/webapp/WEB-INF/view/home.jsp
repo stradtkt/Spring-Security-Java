@@ -12,19 +12,21 @@
 			<div class="container">
 				<h1 class="text-center">Home Page For Security Application</h1>
 				<hr/>
-				<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-					<input type="submit" class="btn btn-primary btn-lg" value="Logout"/>
-				</form:form>
 				<h4><i class="fas fa-id-card"></i> User: <security:authentication property="principal.username"/></h4>
+				<br/>
 				<h4><i class="fas fa-briefcase"></i> Role: <security:authentication property="principal.authorities"/></h4>
 				<hr/>
 				<security:authorize access="hasRole('MANAGER')">
-					<span><a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/leaders">(Only For Managers): Managers</a></span> 
+					<span><a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/leaders">(Only For Managers): Managers</a></span>
 				</security:authorize>
-				| 
 				<security:authorize access="hasRole('ADMIN')">
 					<span><a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/systems">(Only For Administration): Administration</a></span>
 				</security:authorize>
+				<br/>
+				<br/>
+				<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+					<input type="submit" class="btn btn-primary btn-sm" value="Logout"/>
+				</form:form>
 			</div>
 		</div>
 		<div class="m-5 p-5"></div>
