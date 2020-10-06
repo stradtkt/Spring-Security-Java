@@ -19,7 +19,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser(users.username("patrick").password("password").roles("EMPLOYEE", "MANAGER"));
 		auth.inMemoryAuthentication().withUser(users.username("mary").password("test123").roles("EMPLOYEE"));
 		auth.inMemoryAuthentication().withUser(users.username("susan").password("password123").roles("EMPLOYEE", "MANAGER"));
-		auth.inMemoryAuthentication().withUser(users.username("kevin").password("password1234").roles("EMPLOYEE", "MANAGER",  "ADMIN"));
+		auth.inMemoryAuthentication().withUser(users.username("kevin").password("password1234").roles("EMPLOYEE", "ADMIN"));
 		auth.inMemoryAuthentication().withUser(users.username("john").password("password12").roles("EMPLOYEE"));
 	}
 
@@ -33,7 +33,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 			.loginPage("/loginPage")
 			.loginProcessingUrl("/authenticateUser").permitAll()
-			.and().logout().permitAll();
+			.and().logout().permitAll()
+			.and()
+			.exceptionHandling().accessDeniedPage("/access-denied");
 	}
 	
 	
