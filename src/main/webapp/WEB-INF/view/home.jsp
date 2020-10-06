@@ -18,8 +18,13 @@
 				<h4><i class="fas fa-id-card"></i> User: <security:authentication property="principal.username"/></h4>
 				<h4><i class="fas fa-briefcase"></i> Role: <security:authentication property="principal.authorities"/></h4>
 				<hr/>
-				<span><a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/leaders">(Only For Managers And Above): Leaders</a></span> | 
-				<span><a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/systems">(Only For Administration): Administration</a></span>
+				<security:authorize access="hasRole('MANAGER')">
+					<span><a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/leaders">(Only For Managers): Managers</a></span> 
+				</security:authorize>
+				| 
+				<security:authorize access="hasRole('ADMIN')">
+					<span><a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/systems">(Only For Administration): Administration</a></span>
+				</security:authorize>
 			</div>
 		</div>
 		<div class="m-5 p-5"></div>
