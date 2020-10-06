@@ -7,29 +7,34 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	</head>
 	<body>
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="text-center">Custom Login Form Security Application</h1>
-			</div>
-		</div>
+		<div class="m-5 p-5"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
-					<h3>My Custom Login Page</h3>
-					<form:form action="${pageContext.request.contextPath}/authenticateUser" method="POST">
-						<c:if test="${param.error != null}">
-							<div class="alert alert-danger" role="alert">
-  								Invalid Credentials!
-							</div>
-						</c:if>
-						<div class="form-group">
-							<input type="text" class="form-control" name="username" placeholder="Enter Your Username"/>
+					<div class="card shadow-lg">
+						<div class="card-body p-3 m-3">
+							<h3 class="text-center mb-4">Login</h3>
+							<form:form action="${pageContext.request.contextPath}/authenticateUser" method="POST">
+								<c:if test="${param.error != null}">
+									<div class="alert alert-danger" role="alert">
+  										Invalid Credentials.
+									</div>
+								</c:if>
+								<c:if test="${param.logout != null}">
+									<div class="alert alert-success" role="alert">
+										Successfully Logged Out.
+									</div>
+								</c:if>
+								<div class="form-group">
+									<input type="text" class="form-control" name="username" placeholder="Enter Your Username"/>
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" placeholder="Enter Your Password"/>
+								</div>
+								<input type="submit" class="btn btn-primary btn-block" value="Login"/>
+							</form:form>
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="password" placeholder="Enter Your Password"/>
-						</div>
-						<input type="submit" class="btn btn-primary btn-block" value="Login"/>
-					</form:form>
+					</div>
 				</div>
 			</div>
 		</div>
